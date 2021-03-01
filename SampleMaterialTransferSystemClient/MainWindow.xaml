@@ -1,0 +1,175 @@
+﻿<Window x:Class="SampleMaterialTransferSystemClient.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:SampleMaterialTransferSystemClient"
+        xmlns:scr="clr-namespace:SampleMaterialTransferSystemLib;assembly=SampleMaterialTransferSystemLib"
+        mc:Ignorable="d"
+        Title="Client" Width="1400" Height="900">
+    <Window.Resources>
+        <Style TargetType="Menu" >
+            <Setter Property="Width" Value="200"/>
+            <Setter Property="Padding" Value="40,5,10,5"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="Margin" Value="0,0,0,0"/>
+            <Setter Property="HorizontalAlignment" Value="Center"/>
+            <Setter Property="VerticalAlignment" Value="Center"/>
+            <Setter Property="FontSize" Value="15"/>
+            <Setter Property="Foreground" Value="Blue"/>
+        </Style>
+        <Style x:Key="operationButtonStyle" TargetType="{x:Type Button}">
+            <Setter Property="Grid.Row" Value="4"/>
+            <Setter Property="HorizontalAlignment" Value="Left"/>
+            <Setter Property="VerticalAlignment" Value="Top"/>
+            <Setter Property="Width" Value="100"/>
+            <Setter Property="Height" Value="40"/>
+        </Style>
+        <Style x:Key="gridButton" TargetType="{x:Type Button}">
+            <Setter Property="Grid.Row" Value="3"/>
+            <Setter Property="Grid.Column" Value="2"/>
+            <Setter Property="Width" Value="100"/>
+            <Setter Property="Height" Value="40"/>
+            <Setter Property="HorizontalAlignment" Value="Left"/>
+            <Setter Property="VerticalAlignment" Value="Top"/>
+        </Style>
+        <Style TargetType="{x:Type Label}">
+            <Setter Property="Grid.Row" Value="3"/>
+            <Setter Property="Grid.Column" Value="1"/>
+            <Setter Property="HorizontalAlignment" Value="Left"/>
+            <Setter Property="VerticalAlignment" Value="Top"/>
+            <Setter Property="Height" Value="40"/>
+            <Setter Property="Width" Value="100"/>
+        </Style>
+        <Style TargetType="{x:Type ComboBox}">
+            <Setter Property="Grid.Row" Value="3"/>
+            <Setter Property="Grid.Column" Value="1"/>
+            <Setter Property="HorizontalAlignment" Value="Left"/>
+            <Setter Property="VerticalAlignment" Value="Top"/>
+            <Setter Property="Height" Value="40"/>
+            <Setter Property="Width" Value="90"/>
+        </Style>
+    </Window.Resources>
+    <Grid x:Name="mainGrid">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="60"></RowDefinition>
+            <RowDefinition Height="40"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+            <RowDefinition Height="300"></RowDefinition>
+            <RowDefinition Height="50"></RowDefinition>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <Grid Grid.Row="2" Name="subGrid" Margin="0,0,0,0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="200"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <Grid Margin="0,0,0,0"  Grid.Column="0" Background="{StaticResource mainBackgroundResource}" ClipToBounds="True">
+                <ScrollViewer Name="myScrollVier" VerticalScrollBarVisibility="Visible" HorizontalScrollBarVisibility="Visible">
+                    <Canvas  Canvas.Top="0" Canvas.Left="0" Name="myCanvas" Height="1000" Width="2000" HorizontalAlignment="Left" VerticalAlignment="Top">
+                        <!--
+                        <Rectangle Fill="Purple" Height="20" Width="30"></Rectangle>
+                        <scr:CommonStationControl Canvas.Top="100" Canvas.Left="100"  >
+                            <scr:CommonStationControl.RenderTransform>
+                                <RotateTransform Angle="90">
+                                </RotateTransform>
+                            </scr:CommonStationControl.RenderTransform>
+                        </scr:CommonStationControl>
+                        <scr:CommonCarControl Canvas.Top="150" Canvas.Left="200" CarText="C2" Background="Gray" InnerBorderBC="Yellow" InnerBorderBC1="Blue"></scr:CommonCarControl>
+                        -->
+                    </Canvas>
+                </ScrollViewer>
+            </Grid>
+            <!--<ScrollBar Grid.Column="0"  HorizontalAlignment="Right" Orientation="Vertical"  ></ScrollBar>
+            <ScrollBar   Grid.Column="0" Orientation="Horizontal" VerticalAlignment="Bottom"  Scroll="ScrollBar_Scroll" Visibility="Visible"></ScrollBar>-->
+            <ScrollViewer Grid.Column="1" VerticalScrollBarVisibility="Visible" HorizontalScrollBarVisibility="Visible">
+                <TextBlock Margin="5,5,5,5" Grid.Column="1" Width="400"  HorizontalAlignment="Left" VerticalAlignment="Top" Foreground="Red" FontSize="20"
+                         Text="Please read Readme.txt under &#x000A; unistall directory before operation"></TextBlock>
+            </ScrollViewer>
+        </Grid>
+        <Separator Margin="0,0,0,0" Grid.Row="0" VerticalAlignment="Top"></Separator>
+        <Separator Margin="0,0,0,0" Grid.Row="1" VerticalAlignment="Top" ></Separator>
+        <Separator Margin="0,0,0,0" Grid.Row="1" VerticalAlignment="Bottom"></Separator>
+        <Separator Margin="0,0,0,0" Grid.Row="2" VerticalAlignment="Bottom"></Separator>
+        <Separator Margin="0,2,0,0" Grid.Row="3" VerticalAlignment="Top"></Separator>
+        <Separator Margin="0,0,0,0" Grid.Row="3" VerticalAlignment="Bottom"></Separator>
+        <Separator Margin="0,0,0,0" Grid.Row="4" VerticalAlignment="Bottom"></Separator>
+        <StackPanel Orientation="Horizontal" Grid.Row="1" Margin="0,0,0,0">
+            <Menu Margin="0,0,0,0">
+                <MenuItem Header="SystemContorl">
+                    <MenuItem Header="ModeChange"></MenuItem>
+                </MenuItem>
+            </Menu>
+            <Menu >
+                <MenuItem Header="CommandContorl">
+                    <MenuItem Name="CreatCommandWindow" Header="CreatCommand" Click="CreatCommandWindow_Click"></MenuItem>
+                    <MenuItem Name="CommondTest" Header="AutoMove" Click="CommondTest_Click"></MenuItem>
+                </MenuItem>
+            </Menu>
+            <Menu>
+                <MenuItem Header="LogInformation">
+                    <MenuItem Header="ErrorLog"></MenuItem>
+                    <MenuItem Header="CompletedLog">
+                    </MenuItem>
+                    <MenuItem Header="TransformLog"></MenuItem>
+                </MenuItem>
+            </Menu>
+            <Menu>
+                <MenuItem Header="RailCreat">
+                    <MenuItem Header="Rail1" Click="MenuItem_Click"></MenuItem>
+                    <MenuItem Header="Rail2" Click="MenuItem_Click_1"></MenuItem>
+                    <MenuItem Header="Rail3" Click="MenuItem_Click_2"></MenuItem>
+                </MenuItem>
+            </Menu>
+            <Menu>
+                <MenuItem Header="ModelBuild">
+                    <MenuItem Name="StationBuildMenu" Header="StationBuild" Click="StationBuildMenu_Click"></MenuItem>
+                    <MenuItem Name="CarBuildMenu" Header="CarBuild" Click="CarBuildMenu_Click"></MenuItem>
+                </MenuItem>
+            </Menu>
+        </StackPanel>
+        <Button x:Name="PauseCommand" Content="Pause" Style="{StaticResource operationButtonStyle}" Click="PauseCommand_Click" Margin="5,5,5,5"></Button>
+        <Button x:Name="ResumeCommand" Content="Resume" Style="{StaticResource operationButtonStyle}" Click="ResumeCommand_Click" Margin="110,5,5,5"></Button>
+        <Grid Grid.Row="3" >
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="200"/>
+                <ColumnDefinition Width="200"/>
+            </Grid.ColumnDefinitions>
+            <DataGrid x:Name="CommandTable" Grid.Row="3" VerticalScrollBarVisibility="Visible" HorizontalScrollBarVisibility="Visible" Margin="0,5,0,0"
+                      ItemsSource="{Binding }" AutoGenerateColumns="False">
+
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="Number" Binding="{Binding Path=ID,Mode=TwoWay}" Width="Auto"/>
+                    <DataGridTextColumn Header="CommandID" Binding="{Binding Path=Number ,Mode=TwoWay}" Width="Auto"/>
+                    <DataGridTextColumn Header="RailID" Binding="{Binding Path=RailID,Mode=TwoWay}" Width="Auto"/>
+                    <DataGridTextColumn Header="CarID" Binding="{Binding Path=CarID,Mode=TwoWay}" Width="Auto"/>
+                    <DataGridTextColumn Header="StartPhysicalAddress" Binding="{Binding Path=StartPhysicalAddress, Mode=TwoWay}" Width="Auto"/>
+                    <DataGridTextColumn Header="StartLogicalAddress" Binding="{Binding Path=StartLogicalAddress ,Mode=TwoWay}" Width="Auto"/>
+                    <DataGridTextColumn Header="TargetPhysicalAddress" Binding="{Binding Path=TargetPhysicalAddress,Mode=TwoWay}" Width="Auto"/>
+                    <DataGridTextColumn Header="TargetLogicalAddress" Binding="{Binding Path=TargetLogicalAddress,Mode=TwoWay}" Width="Auto"/>
+                    <DataGridTextColumn Header="Priority" Binding="{Binding Path=Priority,Mode=TwoWay}" Width="Auto"/>
+                    <DataGridTextColumn Header="CreateTime" Binding="{Binding Path=CreateTime,Mode=TwoWay}" Width="Auto"/>
+                    <DataGridTextColumn Header="CompleteTime" Binding="{Binding Path=CompleteTime,Mode=TwoWay}" Width="Auto"/>
+                    <DataGridTextColumn Header="IsComplete" Binding="{Binding Path=IsComplete,Mode=TwoWay}" Width="Auto"/>
+                </DataGrid.Columns>
+            </DataGrid>
+            <Label Margin="5,5,0,0">SelectStart:</Label>
+            <Label Margin="5,50,0,0">SelectTarget:</Label>
+            <Label Margin="5,95,0,0">SelectCar:</Label>
+            <Label Margin="5,140,0,0">SelectRail:</Label>
+            <Label Margin="5,185,0,0">Priority :</Label>
+            <ComboBox x:Name="StartSelect" Margin="105,5,5,0" ItemsSource="{Binding}" DropDownClosed="StartSelect_Click"></ComboBox>
+            <ComboBox x:Name="TargetSelect" Margin="105,50,5,0" ItemsSource="{Binding}" DropDownClosed="TargetSelect_Click"></ComboBox>
+            <ComboBox x:Name="CarSelect" Margin="105,95,5,0" ItemsSource="{Binding}" DropDownClosed="CarSelect_Click"></ComboBox>
+            <ComboBox x:Name="RailSelect" Margin="105,140,5,0" ItemsSource="{Binding}" DropDownClosed="RailSelet_Click"></ComboBox>
+            <ComboBox x:Name="PrioritySelect" Margin="105,185,5,0" ItemsSource="{Binding}" DropDownClosed="PrioritySelect_Click"></ComboBox>
+            <Button x:Name="AddCommand" Style="{StaticResource gridButton}" Margin="5,5,0,0" Content="Add" Click="AddCommand_Click"></Button>
+            <Button x:Name="DeleteCommand" Style="{StaticResource gridButton}" Margin="5,50,0,0" Content="Delete" Click="DeleteCommand_Click"></Button>
+            <Button x:Name="AutoCommand" Style="{StaticResource gridButton}" Margin="5,100,0,0" Content="Auto" Click="AutoCommand_Click"></Button>
+        </Grid>
+        <TextBlock Grid.Row="4"  Margin="220,5,0,5" x:Name="Test"  HorizontalAlignment="Left"/>
+    </Grid>
+</Window>

@@ -1,0 +1,25 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:local="clr-namespace:SampleMaterialTransferSystemClient" x:Name="myBackgroundResource">
+    <DrawingBrush x:Key="mainBackgroundResource"  Viewport="0,0 20,20" ViewportUnits="Absolute" TileMode="Tile">
+        <DrawingBrush.Drawing >
+            <DrawingGroup >
+                <DrawingGroup.Children>
+                    <GeometryDrawing >
+                        <GeometryDrawing.Pen>
+                            <Pen  Brush="Black" Thickness="0.3" >
+                            </Pen>
+                        </GeometryDrawing.Pen>
+                        <GeometryDrawing.Geometry >
+                            <RectangleGeometry Rect="0,0 20,20"/>
+                        </GeometryDrawing.Geometry>
+                        <GeometryDrawing.Brush>
+                            <SolidColorBrush Color="Yellow" Opacity="0.2"/>
+                        </GeometryDrawing.Brush>
+                    </GeometryDrawing>
+                </DrawingGroup.Children>
+            </DrawingGroup>
+        </DrawingBrush.Drawing>
+    </DrawingBrush>
+    
+</ResourceDictionary>

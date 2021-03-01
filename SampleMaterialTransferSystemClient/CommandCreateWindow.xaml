@@ -1,0 +1,75 @@
+﻿<Window x:Class="SampleMaterialTransferSystemClient.CommandCreateWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:SampleMaterialTransferSystemClient"
+        mc:Ignorable="d"
+        Title="CommandCreateWindow" Height="650" Width="450" >
+    <Window.Resources>
+        <Style TargetType="Label">
+            <Setter Property="Margin" Value="5,5,0,0"/>
+            <Setter Property="HorizontalAlignment" Value="Left"/>
+            <Setter Property="VerticalAlignment" Value="Top"/>
+            <Setter Property="Width" Value="150"/>
+            <Setter Property="Height" Value="40"/>
+        </Style>
+        <Style TargetType="Button" >
+            <Setter Property="Margin" Value="5,0,0,5"/>
+            <Setter Property="HorizontalAlignment" Value="Left"/>
+            <Setter Property="VerticalAlignment" Value="Bottom"/>
+            <Setter Property="Width" Value="150"/>
+            <Setter Property="Height" Value="40"/>
+        </Style>
+        <Style TargetType="ComboBox">
+            <Setter Property="HorizontalAlignment" Value="Left"/>
+            <Setter Property="VerticalAlignment" Value="Top"/>
+            <Setter Property="Margin" Value="160,5,0,0"/>
+            <Setter Property="Height" Value="40"/>
+            <Setter Property="Width" Value="100"/>
+        </Style>
+        <Style TargetType="TextBox">
+            <Setter Property="BorderBrush" Value="Black"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="Margin" Value="5,50,0,50"/>
+           
+        </Style>
+        <Style x:Key="operationCommandStyle" TargetType="{x:Type Button}">
+            <Setter Property="Grid.Row" Value="3"/>
+            <Setter Property="Width" Value="100"/>
+            <Setter Property="Height" Value="40"/>
+            <Setter Property="HorizontalAlignment" Value="Left" />
+            <Setter Property="VerticalAlignment" Value="Top"/>
+            
+        </Style>
+    </Window.Resources>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition />
+            <RowDefinition/>
+            <RowDefinition />
+            <RowDefinition Height="50"/>
+        </Grid.RowDefinitions>
+        <Separator Grid.Row="0"  VerticalAlignment="Top" BorderBrush="Black" BorderThickness="1" Visibility="Visible"/>
+        <Separator Grid.Row="1"  VerticalAlignment="Top" BorderBrush="Black" BorderThickness="1" Visibility="Visible"/>
+        <Separator Grid.Row="2"  VerticalAlignment="Top"  BorderBrush="Black" BorderThickness="1" Visibility="Visible"/>
+        <Separator Grid.Row="3"  VerticalAlignment="Top" BorderBrush="Black" BorderThickness="1" Visibility="Visible"/>
+        <Label Grid.Row="0" Grid.Column="0">StartStationSelect :</Label>       
+        <ComboBox x:Name="OriginStationComBox" Grid.Row="0" DropDownClosed="OriginStationComBox_Closed"></ComboBox>
+        <TextBox x:Name="OriginStationDisplay" Grid.Row="0"></TextBox>
+        <Button  x:Name="OriginStationLoad" Content="LoadStartPoStation" Grid.Row="0" Click="OriginStationLoad_Click"></Button>
+        <Label Grid.Row="1">TargetStationSelect :</Label>
+        <ComboBox x:Name="TargetStationComBox" Grid.Row="1" DropDownClosed="TargetStationComBox_Closed"></ComboBox>
+        <TextBox x:Name="TargetStationDisplay" Grid.Row="1"></TextBox>
+        <Button x:Name="TargetStationLoad" Content="LoadTargetStation" Grid.Row="1" Click="TargetStationLoad_Click"></Button>
+        <Label Grid.Row="2">SelectCarNumber :</Label>
+        <ComboBox x:Name="SelectCarNumber" Grid.Row="2" DropDownClosed="SelectCarNumber_Close"></ComboBox>
+        <TextBox x:Name="TargetCarDisplay" Grid.Row="2"></TextBox>
+        <Button x:Name="TargetCarLoad" Grid.Row="2" Content="LoadTargetCar" Click="TargetCarLoad_Click"></Button>
+        <Button x:Name="ExecuteCommand" Content="Execute" Style="{StaticResource operationCommandStyle}" Margin="5,5,5,5"
+                Click="ExecuteCommand_Click"></Button>
+        <Button x:Name="PauseCommand" Content="Pause" Click="PauseCommand_Click" Style="{StaticResource operationCommandStyle}" Margin="110,5,5,5"></Button>
+        <Button x:Name="ResumeCommand" Content="Resume" Click="ResumeCommand_Click" Style="{StaticResource operationCommandStyle}" Margin="215,5,5,5"></Button>
+        <Button x:Name="StopCommand" Content="Stop" Click="StopCommand_Click" Style="{StaticResource operationCommandStyle}" Margin="320,5,5,5"></Button>
+    </Grid>
+</Window>
